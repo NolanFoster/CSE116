@@ -11,16 +11,21 @@ public class Main {
 	private String file;
 	private RandomAccessFile store;
 	private MTQueue schQueue;
-
-	public Main() throws FileNotFoundException {
-		dummy = "qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjktnullnull";
-		schQueue = new MTQueue();
-	}
-
 	final private static int MAX_RECORD_NUMBER = 20;
 	final private static int RECORD_LENGTH = 71;
 	private int id;
 	private String dummy;
+	private Thread readThread;
+	private Thread writeThread;
+
+	public Main() throws FileNotFoundException {
+		dummy = "qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjktnullnull";
+		schQueue = new MTQueue();
+		readThread = new Thread();
+		
+		writeThread = new Thread();
+
+	}
 
 	public void setFileLocation(String l) {
 		_loc = l;
@@ -55,7 +60,8 @@ public class Main {
 
 	public void writeToFile(String ID, String pn, String SK, String tn, String d)
 			throws IOException {
-
+		//writeThread.start();
+		System.out.println("update thread started");
 		try {
 			id = Integer.parseInt(ID);
 		} catch (NumberFormatException ex) {
@@ -75,12 +81,15 @@ public class Main {
 		store.seek((RECORD_LENGTH + 2) * (id - 1));
 		schQueue.MTPut(ID.substring(0, 5) + pn.substring(0, 26)
 				+ tn.substring(0, 26) + SK.substring(0, 5) + d.substring(0, 9));
+		JOptionPane.showMessageDialog(null,"Update is Scheduled");
 		store.writeUTF(schQueue.MTGet());
 		
+		
+
 	}
 
 	public void findByID(int i) throws IOException {
-
+	
 		store.seek((RECORD_LENGTH + 2) * (i - 1));
 		try {
 			String Description = store.readUTF();
@@ -97,9 +106,9 @@ public class Main {
 		} catch (StringIndexOutOfBoundsException ex) {
 			// String name = JOptionPane.showMessageDialog(null,
 			// "Error 404: Index not found, Try another index");
-			System.out.println("Index not Found");
+			System.out.println("Error 404: Index not found");
 		} catch (EOFException x) {
-			System.out.println("Index not Found");
+			System.out.println("Error 404: Index not found");
 
 		}
 

@@ -7,10 +7,7 @@ public class MTQueue {
 	
 	public MTQueue(){
 		statQ = new java.util.LinkedList<String>();
-		Thread readThread = new Thread();
-		readThread.start();
-		Thread writeThread = new Thread();
-		writeThread.start();
+		
 	}
 	
 	public void MTPut(String qe){
