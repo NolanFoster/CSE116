@@ -1,9 +1,14 @@
-public class MergeSort {
+public class MergeSort extends Thread{
 
 	private double[] numbers;
 	private double[] temp;
 	private int number;
-
+	
+	
+	
+	public double retIndex(int f){
+		return numbers[f];
+	}
 	public void sort(double[] values) {
 		this.numbers = values;
 		number = values.length;
@@ -55,23 +60,10 @@ public class MergeSort {
 			i++;
 			
 		}
-		int c=0;
-		boolean ret =true;
-		for(int b=1; b<numbers.length;b++){
-			if(numbers[c]<numbers[b]){
-				c=b;
-				
-				ret=true;
-			}else{
-				ret=false;
-			}
-			
-			if(ret==true){
-				System.out.println("The list is sorted");
-			}
-			}
+		
 
 	}
 	
 	
 }
+
