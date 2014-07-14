@@ -7,9 +7,9 @@ static double[] ArrayToBeSorted;
 	 */
 	public static void main(String[] args) throws InterruptedException {
 		
-		ArrayToBeSorted = new double[1000001];
+		ArrayToBeSorted = new double[100001];
 		MergeSort ms = new MergeSort();
-		for(int i=0; i< 1000000; i++){
+		for(int i=0; i< 100000; i++){
 			
 			ArrayToBeSorted[i] = Math.random();
 			
