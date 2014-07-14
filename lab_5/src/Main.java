@@ -30,20 +30,19 @@ static double[] ArrayToBeSorted;
 			ArrayToBeSorted[b] = ms.retIndex(b);
 			}
 		// check if array is sorted
-		for (int b = 1; b < ArrayToBeSorted.length; b++) {
-			if (ArrayToBeSorted[c] < ArrayToBeSorted[b]) {
-				c = b;
+		for (int b = 0; b < ArrayToBeSorted.length-1; b++) {
+			if (ArrayToBeSorted[b] < ArrayToBeSorted[b+1]) {
 				ret = true;
 			} else {
 				ret = false;
+				System.out.println("Your program is wrong");
+				return;
 				
 			}
 			}
 		if (ret == true) {
 			System.out.println("The list is sorted");
 			
-		}else{
-			System.out.println("Your program is wrong");
 		}
 		
 

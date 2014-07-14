@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Random;
 
@@ -6,7 +7,7 @@ public class vMemTest {
 	private final static int ARRAYSIZE = 1000;
 	private final static int VIRTRATIO = 100;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		// make an array of ARRAYSIZE elements
 		vMem array = new vMem(ARRAYSIZE, ARRAYSIZE/VIRTRATIO);
