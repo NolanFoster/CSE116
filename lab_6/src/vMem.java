@@ -13,7 +13,7 @@ public class vMem {
 		array = new long[100];
 System.out.println("Creating Virtual Memory...");
 		store = new RandomAccessFile("files/swapfile", "rw");
-		for (int k = 0; k <= i * 8; k++) {
+		for (int k = 0; k <= i * 8+1; k++) {
 			store.seek(k * 8);
 			store.writeLong(1);
 		}
