@@ -8,7 +8,7 @@ public class vMemTest {
 	private final static int VIRTRATIO = 100;
 
 	public static void main(String[] args) throws IOException {
-		
+		orderedTest ot = new orderedTest();
 		// make an array of ARRAYSIZE elements
 		vMem array = new vMem(ARRAYSIZE, ARRAYSIZE/VIRTRATIO);
 		
@@ -19,7 +19,7 @@ public class vMemTest {
 		long gotten = 0;
 		long startTime = System.nanoTime();
 		for(int i = 0; i<ARRAYSIZE* ARRAYSIZE; ++i){
-			
+			//index = 100;
 			index = random.nextInt(ARRAYSIZE);
 			value = random.nextLong();
 			
@@ -41,6 +41,7 @@ public class vMemTest {
 		System.out.println("Elapsed time (millisec) is " + (endTime -startTime)/1000000);
 		
 		System.out.println("Test complete");
+		
 
 	}
 }
