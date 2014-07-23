@@ -14,6 +14,7 @@ public class vMem {
 //System.out.println("Creating Virtual Memory...");
 		store = new RandomAccessFile("files/swapfile", "rw");
 		for (int k = 0; k <= i * 8; k++) {
+			
 			store.seek(k * 8);
 			store.writeLong(1);
 		}
@@ -22,7 +23,10 @@ public class vMem {
 
 	public long vRead(int low, int i, int high) throws IOException {
 	//System.out.println("Reading Virtual Memory...");
-//		for (int k = 0; k < 99; k++) {
+		for (int k = 0; k < 99; k++) {
+		if (k == 0) { store.seek((low*8)+k);  }
+		array[k] = store.readLong();
+	}
 			int index =high-i;
 			store.seek(i*8);
 			array[index] = store.readLong();
@@ -35,14 +39,13 @@ public class vMem {
 
 	public void vWrite(int low, int i, long val, int high) throws IOException {
 		
-		//long res=vRead(low, i, high);
+		//
 		int index =high-i;
 		array[index] = val;
 		//System.out.println("Writing to Virtual Memory...");
 		store.seek(i * 8);
 		store.writeLong(array[index]);
-		//System.out.println(array[index]);
-
+		
 	}
 
 	public void put(int i, long v) throws IOException {

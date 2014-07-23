@@ -15,8 +15,8 @@ public class orderedTest {
 		long gotten = 0;
 		long startTime = System.nanoTime();
 	
-		for(int i = 0; i<ARRAYSIZE* ARRAYSIZE; ++i){
-			
+		for(int i = 0; i<ARRAYSIZE; ++i){
+			//if((i/100)!=(i-1System.out.println((i/100)+" %");
 			index = i;
 			value = 1000-i;
 			
@@ -35,10 +35,17 @@ public class orderedTest {
 			}
 		}
 		long endTime = System.nanoTime();
-		System.out.println("Test 1: Elapsed time (millisec) is " + (endTime -startTime)/1000000);
-		System.out.println("Test complete");
+		System.out.println("Adding Ordered Numbers: Elapsed time (millisec) is " + (endTime -startTime)/1000000);
+		//System.out.println("Test 2 Decending order");
 		boolean  ret = true;
-		for (int b = 0; b < ARRAYSIZE* ARRAYSIZE-1; b++) {
+		System.out.print("Testing order...");
+		for (int b = 0; b < ARRAYSIZE-1; b++) {
+			if((b/100)!= (b-1)/100){
+				
+			System.out.print(".");
+			
+			}
+			
 			if (array.get(b) > array.get(b+1)) {
 				ret = true;
 			} else {
