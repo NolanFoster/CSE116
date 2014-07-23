@@ -1,30 +1,25 @@
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Random;
 
-public class vMemTest {
 
+public class vMemTest {
 	private final static int ARRAYSIZE = 1000;
 	private final static int VIRTRATIO = 100;
-
-	public static void main(String[] args) throws IOException {
-		long startTime = System.nanoTime();
-		orderedTest ot = new orderedTest();
-		// make an array of ARRAYSIZE elements
+	public vMemTest() throws IOException{
 		vMem array = new vMem(ARRAYSIZE, ARRAYSIZE/VIRTRATIO);
 		
-		Random random = new Random();
+		//Random random = new Random();
 		
 		int index;
 		long value;
 		long gotten = 0;
-		
+		long startTime = System.nanoTime();
+	
 		for(int i = 0; i<ARRAYSIZE; ++i){
-			//System.out.println((i/100000)+" %");
-			//index = 100;
-			index = random.nextInt(ARRAYSIZE);
-			value = random.nextLong();
-			
+			index = i;
+			value = 1000-i;
+//			index = random.nextInt(ARRAYSIZE);
+//			value = random.nextLong();
 			try{
 				array.put(index, value);
 				gotten = array.get(index);
@@ -40,10 +35,33 @@ public class vMemTest {
 			}
 		}
 		long endTime = System.nanoTime();
-		System.out.println("Total elapsed time (millisec) is " + (endTime -startTime)/1000000);
+		System.out.println("Adding Ordered Numbers: Elapsed time (millisec) is " + (endTime -startTime)/1000000);
 		
-		System.out.println("Test complete");
-		
+		boolean  ret = true;
+		System.out.print("Testing order...");
+		for (int b = 0; b < ARRAYSIZE-1; b++) {
+			if((b/100)!= (b-1)/100){
+				
+			System.out.print(".");
+			
+			}
+			
+			if (array.get(b) > array.get(b+1)) {
+				ret = true;
+			} else {
+				ret = false;
+				System.out.println("The List is not sorted");
+				return;
+				
+			}
+			}
+		if (ret == true) {
+			System.out.println("The List is sorted");
+			
+		}
+	
 
 	}
+	
+
 }
