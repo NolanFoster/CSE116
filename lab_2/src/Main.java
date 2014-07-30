@@ -45,7 +45,7 @@ public class Main {
 	public void createFile() throws IOException {
 		// saves the file a txt file
 		file = _loc + "/" + _name + ".txt";
-		// File fout = new File(file);
+		
 		store = new RandomAccessFile(file, "rw");
 		
 		for (int i = 0; i < MAX_RECORD_NUMBER; i++) {

@@ -33,7 +33,7 @@ public class vMem {
 
 	public void vWrite(int low, int i, long val, int high) throws IOException {
 		
-		vRead(low, i, high);
+		//vRead(low, i, high);
 		int index =high-i;
 		array[index] = val;
 		store.seek(i * 8);
